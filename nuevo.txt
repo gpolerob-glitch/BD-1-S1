@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gianmega Inmobiliaria - Lotes Costa Sur Guatemala</title>
+    <meta name="description" content="Lotes en venta Costa Sur Guatemala. Financiamiento 0% enganche. Precios desde Q15,000. WhatsApp 3667-6447">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --dark: #111827;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --shadow: 0 20px 60px rgba(30,58,138,0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.7; color: var(--dark); overflow-x: hidden; }
+
+        /* HEADER */
+        .header { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 1.8rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; box-shadow: var(--shadow); }
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; }
+        .nav-links a { color: var(--dark); text-decoration: none; font-weight: 500; transition: all 0.3s; }
+        .cta-header { background: linear-gradient(135deg, var(--accent), #059669); color: white !important; padding: 12px 24px; border-radius: 50px; font-weight: 600; }
+        .mobile-menu { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .mobile-menu span { width: 25px; height: 3px; background: var(--primary); }
+
+        /* HERO */
+        .hero { min-height: 100vh; background: linear-gradient(135deg, rgba(30,58,138,0.9) 0%, rgba(59,130,246,0.8) 50%, rgba(16,185,129,0.7) 100%); display: flex; align-items: center; justify-content: center; text-align: center; color: white; margin-top: 80px; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; margin-bottom: 1.5rem; }
+        .hero-stats { display: flex; justify-content: center; gap: 3rem; margin: 3rem 0; flex-wrap: wrap; }
+        .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--accent); display: block; }
+
+        /* SECTIONS */
+        .section { padding: 6rem 0; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+        .section-title { text-align: center; font-size: 3rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-subtitle { text-align: center; font-size: 1.2rem; color: #6b7280; max-width: 600px; margin: 0 auto 4rem; }
+
+        /* PROPERTY CARDS */
+        .properties-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2.5rem; margin-top: 4rem; }
+        .property-card { background: white; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); transition: all 0.4s ease; }
+        .property-card:hover { transform: translateY(-20px); box-shadow: 0 40px 100px rgba(30,58,138,0.2); }
+        .property-gallery { position: relative; height: 280px; overflow: hidden; }
+        .property-main-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .property-card:hover .property-main-image { transform: scale(1.05); }
+        .gallery-thumbs { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; background: rgba(0,0,0,0.7); padding: 8px; border-radius: 20px; }
+        .thumb { width: 50px; height: 35px; border-radius: 8px; object-fit: cover; cursor: pointer; border: 2px solid transparent; transition: all 0.3s; }
+        .thumb.active { border-color: var(--accent); }
+        .property-badge { position: absolute; top: 20px; left: 20px; background: var(--accent); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; }
+        .property-content { padding: 2.5rem; }
+        .property-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary); }
+        .property-price { font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-bottom: 1rem; }
+        .property-features { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+        .feature { background: var(--light); padding: 6px 12px; border-radius: 20px; color: var(--primary); }
+
+        /* CONTACTO COMO EL ORIGINAL */
+        .contact-section { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; }
+        .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .contact-info h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.8rem; }
+        .contact-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 16px; transition: all 0.3s; }
+        .contact-item:hover { background: rgba(255,255,255,0.2); transform: translateX(10px); }
+        .contact-item i { font-size: 1.5rem; width: 50px; height: 50px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .contact-form { background: white; padding: 3rem; border-radius: 24px; box-shadow: var(--shadow); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1.2rem; border: 2px solid #e9ecef; border-radius: 16px; font-size: 1rem; transition: all 0.3s; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(16,185,129,0.1); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .mobile-menu { display: flex; }
+            .nav-links { position: fixed; left: -100%; top: 80px; flex-direction: column; background: white; width: 100%; padding: 2rem; box-shadow: var(--shadow); transition: left 0.3s; }
+            .nav-links.active { left: 0; }
+            .contact-content { grid-template-columns: 1fr; gap: 2rem; }
+            .properties-grid { grid-template-columns: 1fr; }
+        }
+
+        .footer { background: var(--dark); color: white; text-align: center; padding: 3rem 0; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🏠</div>
+                <span>Gianmega</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#lotes">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#contacto" class="cta-header">Asesoría WhatsApp</a>
+            <div class="mobile-menu">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="inicio" class="hero">
+        <div style="max-width: 900px; padding: 0 2rem;">
+            <h1>Lotes en Costa Sur Guatemala</h1>
+            <p style="font-size: 1.4rem; margin: 2rem 0;">Financiamiento propio • 0% enganche • Cuotas desde Q400</p>
+            <div class="hero-stats">
+                <div style="text-align: center;"><span class="stat-number">45+</span><br><small>Lotes</small></div>
+                <div style="text-align: center;"><span class="stat-number">Q400</span><br><small>Mensual</small></div>
+                <div style="text-align: center;"><span class="stat-number">24h</span><br><small>Aprobación</small></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section id="lotes" class="section">
+        <div class="container">
+            <h2 class="section-title">Nuestros Proyectos</h2>
+            <div class="properties-grid">
+                <!-- LOTE 1 - CAMBIA PRECIO Y TEXTO -->
+                <div class="property-card">
+                    <div class="property-gallery">
+                        <img src="https://via.placeholder.com/500x280/1e3a8a/ffffff?text=LOTE+1+PRINCIPAL" class="property-main-image" id="main1">
+                        <div class="property-badge">OFERTA</div>
+                        <div class="gallery-thumbs">
+                            <img src="https://via.placeholder.com/60x40/3b82f6/ffffff?text=1" class="thumb active" data-img="1-1">
+                            <img src="https://via.placeholder.com
